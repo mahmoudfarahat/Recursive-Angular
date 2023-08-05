@@ -1,13 +1,14 @@
 
 <person [person]="person">
-  <!-- #personRef has been replaced with person (PersonDirective selector) -->
+   <!-- #personRef has been replaced with person (PersonDirective selector)
   <ng-template #personRef person  let-name let-age="age">
     {{ name }}: {{ age }}
-  </ng-template>
+  </ng-template> -->
 </person>
 
 
-
+<br><br>
+<br>
 <list [list]="students">
   <ng-template [appList]="students" let-student let-i="index">
     {{ student.name }}: {{ student.age }} - {{ i }}

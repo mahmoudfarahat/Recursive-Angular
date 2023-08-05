@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, ContentChild, Input, OnInit, TemplateRef } from '@angular/core';
+import { ListTemplateDirective } from '../list-template.directive';
 
 @Component({
   selector: 'list',
@@ -15,6 +16,6 @@ export class ListComponent<TItem extends object> implements OnInit {
   }
   @Input() list!: TItem[];
 
-  @ContentChild('listRef', { read: TemplateRef })
+  @ContentChild(ListTemplateDirective, { read: TemplateRef })
   listTemplateRef!: TemplateRef<unknown>;
 }
