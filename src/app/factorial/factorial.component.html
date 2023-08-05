@@ -1,0 +1,8 @@
+
+<h2>Factorial Calculator</h2>
+<p>Recursive case: n! = n * (n-1)!</p>
+<div>
+  <input type="number" [(ngModel)]="inputNumber" />
+  <button (click)="calculateFactorial()">Calculate Factorial</button>
+</div>
+<p *ngIf="result !== null">Factorial of {{ inputNumber }} is: {{ result }}</p>
