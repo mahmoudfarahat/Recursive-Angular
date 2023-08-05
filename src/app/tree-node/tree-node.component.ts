@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 class TreeNode {
-  constructor(public name: string, public children: TreeNode[] = [], public parent?: TreeNode) {}
+  constructor(
+    public name: string,
+    public children: TreeNode[] = [],
+    public parent?: TreeNode
+  ) {}
 }
 
 @Component({
@@ -19,10 +23,14 @@ export class TreeNodeComponent implements OnInit {
 
   addNode(parentNode: TreeNode | null = null) {
     if (!parentNode) {
-      const newNode = new TreeNode(`Node ${this.generateUniqueIndex(parentNode)}`);
+      const newNode = new TreeNode(
+        `Node ${this.generateUniqueIndex(parentNode)}`
+      );
       this.nodes.push(newNode);
     } else {
-      const newNode = new TreeNode(`Node ${this.generateUniqueIndex(parentNode)}`);
+      const newNode = new TreeNode(
+        `Node ${this.generateUniqueIndex(parentNode)}`
+      );
       parentNode.children.push(newNode);
     }
     console.log(this.nodes);
@@ -30,7 +38,9 @@ export class TreeNodeComponent implements OnInit {
 
   addSiblingNode(parentNode: TreeNode) {
     if (parentNode.parent) {
-      const newNode = new TreeNode(`Node ${this.generateUniqueIndex(parentNode.parent)}`);
+      const newNode = new TreeNode(
+        `Node ${this.generateUniqueIndex(parentNode.parent)}`
+      );
       parentNode.parent.children.push(newNode);
       console.log(this.nodes);
     }
@@ -45,7 +55,9 @@ export class TreeNodeComponent implements OnInit {
   }
 
   getNodeIndex(parentIndex: string, index: number): string {
-    return parentIndex === '' ? (index + 1).toString() : `${parentIndex}.${index + 1}`;
+    return parentIndex === ''
+      ? (index + 1).toString()
+      : `${parentIndex}.${index + 1}`;
   }
 
   onSelectNode(node: TreeNode) {

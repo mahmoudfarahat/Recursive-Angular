@@ -1,0 +1,27 @@
+
+<person [person]="person">
+  <!-- #personRef has been replaced with person (PersonDirective selector) -->
+  <ng-template #personRef person  let-name let-age="age">
+    {{ name }}: {{ age }}
+  </ng-template>
+</person>
+
+
+
+<list [list]="students">
+  <ng-template [appList]="students" let-student let-i="index">
+    {{ student.name }}: {{ student.age }} - {{ i }}
+  </ng-template>
+</list>
+
+
+<list [list]="students">
+  <ng-container *appList="students as student; index as i">
+    {{ student.name }}: {{ student.age }} - {{ i }}
+  </ng-container>
+</list>
+<!-- <list [list]="cities">
+  <ng-template #listRef let-city let-i="index">
+    {{ city.name }}: {{ city.country }} - {{ i }}
+  </ng-template>
+</list> -->

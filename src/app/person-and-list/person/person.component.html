@@ -1,0 +1,22 @@
+
+
+
+
+
+
+
+
+
+
+
+<ng-container
+  *ngTemplateOutlet="
+    personRef.template;
+    context: { $implicit: person.name,  age: person.age }
+  ">
+</ng-container>
+
+<!-- assign the directive to personRef to access internal properties -->
+<ng-template #personRef="personExportAsRef" person let-name let-age="age">
+  {{ name }}: {{ age }}
+</ng-template>
