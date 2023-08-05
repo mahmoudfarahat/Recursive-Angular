@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 class TreeNode {
-  constructor(public name: string, public children: TreeNode[] = []) {}
+  constructor(public name: string, public children: TreeNode[] = [], public parent?: TreeNode) {}
 }
+
 @Component({
   selector: 'app-tree-node',
   templateUrl: './tree-node.component.html',
@@ -12,53 +13,42 @@ export class TreeNodeComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
   nodes: TreeNode[] = [new TreeNode('Node 1'), new TreeNode('Node 2')];
+  selectedNode: TreeNode | null = null;
 
   addNode(parentNode: TreeNode | null = null) {
-    const newNode = new TreeNode(`Node ${this.generateUniqueIndex(parentNode)}`);
-    if (parentNode) {
-
-      parentNode.children.push(newNode);
-    } else {
+    if (!parentNode) {
+      const newNode = new TreeNode(`Node ${this.generateUniqueIndex(parentNode)}`);
       this.nodes.push(newNode);
+    } else {
+      const newNode = new TreeNode(`Node ${this.generateUniqueIndex(parentNode)}`);
+      parentNode.children.push(newNode);
     }
-console.log(this.nodes)
+    console.log(this.nodes);
+  }
+
+  addSiblingNode(parentNode: TreeNode) {
+    if (parentNode.parent) {
+      const newNode = new TreeNode(`Node ${this.generateUniqueIndex(parentNode.parent)}`);
+      parentNode.parent.children.push(newNode);
+      console.log(this.nodes);
+    }
   }
 
   generateUniqueIndex(parentNode: TreeNode | null = null): number {
-    const indices = this.getAllIndices(parentNode);
-
-    let newIndex = 1;
-    while (indices.includes(newIndex)) {
-      newIndex++;
+    if (!parentNode) {
+      return this.nodes.length + 1;
     }
 
-    return newIndex;
-  }
-
-  getAllIndices(parentNode: TreeNode | null = null): number[] {
-    if(parentNode){
-
-    }
-
-    const indices: number[] = [];
-
-    const traverse = (node: TreeNode) => {
-
-      const index = parseInt(node.name.split(' ')[1], 10);
-
-      indices.push(index);
-
-      node.children.forEach(traverse);
-
-    };
-    this.nodes.forEach(traverse);
-    return indices;
+    return parentNode.children.length + 1;
   }
 
   getNodeIndex(parentIndex: string, index: number): string {
+    return parentIndex === '' ? (index + 1).toString() : `${parentIndex}.${index + 1}`;
+  }
 
-    return parentIndex === '1' ? (index + 1).toString() : `${parentIndex} `;
-
+  onSelectNode(node: TreeNode) {
+    this.selectedNode = node;
   }
 }

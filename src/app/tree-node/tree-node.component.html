@@ -1,18 +1,19 @@
 <div class="tree">
   <h2>Recursive Tree</h2>
-  <button (click)="addNode()">Add Node</button>
-  <ng-container *ngTemplateOutlet="recursiveTree; context: { nodes: nodes, parentIndex: '1' }"></ng-container>
+  <button (click)="addNode()">Add Child</button>
+  <button *ngIf="selectedNode && selectedNode.parent" (click)="addSiblingNode(selectedNode)">Add Sibling</button>
+  <ng-container *ngTemplateOutlet="recursiveTree; context: { nodes: nodes, parentIndex: '' }"></ng-container>
 </div>
-
 
 <ng-template #recursiveTree let-nodes="nodes" let-parentIndex="parentIndex">
   <ul class="nodes" *ngIf="nodes && nodes.length > 0">
-    <li *ngFor="let node of nodes; let i = index">
+    <li *ngFor="let node of nodes; let i = index" (click)="onSelectNode(node)">
       <div class="node">
         {{ getNodeIndex(parentIndex, i) }} - {{ node.name }}
-        <button *ngIf="node.children.length === 0" (click)="addNode(node)">Add Child</button>
+        <button (click)="addNode(node)">Add Child</button>
+        <button *ngIf="node.parent && node.parent.children.length > 1" (click)="addSiblingNode(node)">Add Sibling</button>
       </div>
-      <ng-container *ngTemplateOutlet="recursiveTree; context: { nodes: node.children, parentIndex: parentIndex + '.' + (i + 1) }"></ng-container>
+      <ng-container *ngTemplateOutlet="recursiveTree; context: { nodes: node.children, parentIndex: getNodeIndex(parentIndex, i) }"></ng-container>
     </li>
   </ul>
 </ng-template>
