@@ -14,9 +14,11 @@ import { AppTemplateOutlet } from './person-and-list/AppTemplateOutlet.directive
 import { ListTemplateDirective } from './person-and-list/list-template.directive';
 import { NgTemplateComponent } from './ng-template/ng-template.component';
 
- 
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 @NgModule({
   declarations: [
@@ -34,15 +36,16 @@ NgTemplateComponent,
 
 
 
-
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-
+    BrowserAnimationsModule,
+    TooltipModule.forRoot(),
+    BsDropdownModule.forRoot(),
   ],
-  providers: [],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }
