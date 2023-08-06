@@ -12,12 +12,9 @@ import { PersonListComponent } from './person-and-list/person-list/person-list.c
 import { PersonDirective } from './person-and-list/person.directive';
 import { AppTemplateOutlet } from './person-and-list/AppTemplateOutlet.directive';
 import { ListTemplateDirective } from './person-and-list/list-template.directive';
+import { NgTemplateComponent } from './ng-template/ng-template.component';
 
-
-
-
-
-
+ 
 
 
 
@@ -32,7 +29,10 @@ import { ListTemplateDirective } from './person-and-list/list-template.directive
     PersonDirective,
 
 AppTemplateOutlet,
-ListTemplateDirective
+ListTemplateDirective,
+NgTemplateComponent,
+
+
 
 
   ],

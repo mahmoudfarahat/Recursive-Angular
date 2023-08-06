@@ -10,10 +10,7 @@
 
 
 <ng-container
-  *ngTemplateOutlet="
-    personRef.template;
-    context: { $implicit: person.name,  age: person.age }
-  ">
+  *ngTemplateOutlet=" personRef.template; context: { $implicit: person.name,  age: person.age }  ">
 </ng-container>
 
 <!-- assign the directive to personRef to access internal properties -->

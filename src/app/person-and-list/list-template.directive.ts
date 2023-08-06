@@ -12,10 +12,5 @@ interface ListTemplateContext<T> {
 export class ListTemplateDirective<T> {
   @Input('appList') list!: T[]
 
-  static ngTemplateContextGuard<TContext>(
-    dir: ListTemplateDirective<TContext>,
-    ctx: unknown
-  ): ctx is ListTemplateContext<TContext> {
-    return true;
-  }
+  
 }
