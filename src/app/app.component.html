@@ -1,8 +1,68 @@
 
 
+<h2>Defining a Template using ng-Template</h2>
 
 
 
+<!-- <ng-container *ngTemplateOutlet="sayHelloTemplate">
+  This text is not displayed
+</ng-container> -->
+
+
+
+///////////
+<ng-template #sayHelloTemplate>
+  <p> Say Hello</p>
+</ng-template>
+
+
+
+
+
+
+
+<!-- <div>
+  <ng-template [ngTemplateOutlet]="reusable" [ngOutletContext]="context"></ng-template>
+  <ng-container *ngTemplateOutlet="reusable"  ></ng-container>
+
+</div>
+
+<div>
+
+</div>
+
+
+<div>
+
+</div>
+
+
+<div>
+  <ng-container *ngTemplateOutlet="reusable"  ></ng-container>
+</div>
+
+<ng-template #reusable>
+
+  <p>reusable</p>
+</ng-template>
+
+ -->
+
+
+
+
+
+
+
+<!--
+<ng-template [ngIf]="title"> Hello </ng-template>
+
+
+<ng-template *ngIf="title">Go Home</ng-template>
+
+<ng-template  #goHome> Go Home</ng-template> -->
+
+<!-- <app-usage></app-usage> -->
 
 <!-- <app-ng-template></app-ng-template> -->
 
@@ -10,3 +70,4 @@
 
 <!-- <app-tree-node></app-tree-node> -->
 <!-- <app-factorial></app-factorial> -->
+

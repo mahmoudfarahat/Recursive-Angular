@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +7,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'RecursionAngular';
+
+  constructor(private vref:ViewContainerRef) {
+  }
+
   
+  ngAfterViewInit() {
+    this.vref.createEmbeddedView(this.sayHelloTemplate);
+  }
+
+
+  @ViewChild('sayHelloTemplate', { read: TemplateRef }) sayHelloTemplate!:TemplateRef<any>;
 }

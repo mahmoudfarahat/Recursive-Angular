@@ -19,6 +19,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { CardOrListViewComponent } from './ngtemplateOutlet/card-or-list-view/card-or-list-view.component';
+import { UsageComponent } from './ngtemplateOutlet/usage/usage.component';
+import { CardItemDirective } from './ngtemplateOutlet/directives/card-item.directive';
+import { ListItemDirective } from './ngtemplateOutlet/directives/list-item.directive';
 
 @NgModule({
   declarations: [
@@ -33,6 +37,10 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 AppTemplateOutlet,
 ListTemplateDirective,
 NgTemplateComponent,
+CardOrListViewComponent,
+UsageComponent,
+CardItemDirective,
+ListItemDirective,
 
 
 
